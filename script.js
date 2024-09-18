@@ -76,3 +76,32 @@ document.getElementById("selectSubject").onchange = function () {
         }
     }
 };
+document.getElementById("feedbackForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var rating = document.querySelector('input[name="rating"]:checked').value;
+    var comment = document.getElementById("comment").value;
+
+    // Here you can handle the submission, for now just logging the values
+    console.log("Rating: ", rating);
+    console.log("Comment: ", comment);
+    console.log("Subject: ", selectSubject.value);
+    console.log("Teacher: ", selectTeacher.value);
+
+    // You can send this data to the server using AJAX or other methods
+    // For simplicity, I'm just logging it here
+});
+
+const commentEle = document.getElementById('comment');
+const counterEle = document.getElementById('counter');
+
+commentEle.addEventListener('input', function (e) {
+    const target = e.target;
+
+    // Get the `maxlength` attribute
+    const maxLength = target.getAttribute('maxlength');
+
+    // Count the current number of characters
+    const currentLength = target.value.length;
+
+    counterEle.innerHTML = `${currentLength}/${maxLength}`;
+});
