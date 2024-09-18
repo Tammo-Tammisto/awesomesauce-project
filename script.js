@@ -1,36 +1,78 @@
-var select = document.getElementById("selectSubject");
+var selectSubject = document.getElementById("selectSubject");
 var subject = ["Matemaatika", "Inglise keel", "Eesti keel", "Vene keel", "Programmeerimise alused"];
 
-for(var i = 0; i < subject.length; i++) {
+for (var i = 0; i < subject.length; i++) {
     var opt = subject[i];
     var el = document.createElement("option");
     el.textContent = opt;
     el.value = opt;
-    select.appendChild(el);
+    selectSubject.appendChild(el);
 }
-MathTeachers = ["Eva Saul", "Hanna"]
 
-function dropdownTeacher(listindex)
-{
-     document.getElementById("ddlCity").options.length = 0;
-     switch (listindex) 
-     {
-         case "Karnataka":
-                 document.getElementById("ddlCity").options[0] = new Option("--select--", "");
-                 document.getElementById("ddlCity").options[1] = new Option("Dharawad", "Dharawad");
-                 document.getElementById("ddlCity").options[2] = new Option("Haveri", "Haveri");
-                 document.getElementById("ddlCity").options[3] = new Option("Belgum", "Belgum");
-                 document.getElementById("ddlCity").options[4] = new Option("Bijapur", "Bijapur");
+mathTeachers = ["Eva Saul", "Hanna Toom", "Rutt Kukk", "Svetlana Mihhailova", "Vitali Retšnoi", "Julia Tammela"];
+englishTeachers = ["Anastasia Stacey Andros", "Reen Liivat-Oorschot", "Irina Stassenko", "Helena Stern-Kopra", "Inna Tammet", "Klea Vaher", "Marina Zotikova"];
+estonianTeachers = ["Terje Varul", "Lea Kreinin", "Pille Reins", "Siiri Salin", "Jaanika Stackhouse"];
+russianTeachers = ["Alla Nikitina"];
+programmingTeachers = ["Timo Triisa", "Gunnar Peipman"];
 
-             break;
-
-         case "Tamilnadu":
-             document.getElementById("ddlCity").options[0] = new Option("--select--", "");
-             document.getElementById("ddlCity").options[1] = new Option("dgdf", "dgdf");
-             document.getElementById("ddlCity").options[2] = new Option("gffd", "gffd");
-
-
-             break;
-     }
-
-}
+var selectTeacher = document.getElementById("selectTeacher");
+document.getElementById("selectSubject").onchange = function () {
+    if (selectSubject.value == "Vali aine") {
+        document.getElementById("selectTeacher").innerHTML = "<option>Vali aine enne õpetaja valikut</option>";
+    }
+    else if (selectSubject.value == "Matemaatika") {
+        console.log("Matemaatika");
+        document.getElementById("selectTeacher").innerHTML = "";
+        for (var i = 0; i < mathTeachers.length; i++) {
+            var opt = mathTeachers[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            selectTeacher.appendChild(el);
+        }
+    }
+    else if (selectSubject.value == "Inglise keel") {
+        console.log("Inglise keel");
+        document.getElementById("selectTeacher").innerHTML = "";
+        for (var i = 0; i < englishTeachers.length; i++) {
+            var opt = englishTeachers[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            selectTeacher.appendChild(el);
+        }
+    }
+    else if (selectSubject.value == "Eesti keel") {
+        console.log("Eesti keel");
+        document.getElementById("selectTeacher").innerHTML = "";
+        for (var i = 0; i < estonianTeachers.length; i++) {
+            var opt = estonianTeachers[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            selectTeacher.appendChild(el);
+        }
+    }
+    else if (selectSubject.value == "Vene keel") {
+        console.log("Vene keel");
+        document.getElementById("selectTeacher").innerHTML = "";
+        for (var i = 0; i < russianTeachers.length; i++) {
+            var opt = russianTeachers[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            selectTeacher.appendChild(el);
+        }
+    }
+    else if (selectSubject.value == "Programmeerimise alused") {
+        console.log("Programmeerimise alused");
+        document.getElementById("selectTeacher").innerHTML = "";
+        for (var i = 0; i < programmingTeachers.length; i++) {
+            var opt = programmingTeachers[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            selectTeacher.appendChild(el);
+        }
+    }
+};
