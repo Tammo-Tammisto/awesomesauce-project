@@ -83,11 +83,14 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
 
     // Here you can handle the submission, for now just logging the values
 
-    if (selectSubject.value !== "Vali aine" && selectTeacher.value !== "Vali õpetaja") {
+    if (selectSubject.value !== "Vali aine" && selectTeacher.value !== "Vali õpetaja" && document.getElementById("studentName").value !== "" && document.getElementById("stGroup").value !== "") {
         console.log("Rating: ", rating);
         console.log("Comment: ", comment);
         console.log("Subject: ", selectSubject.value);
         console.log("Teacher: ", selectTeacher.value);
+        console.log("Student name: ", document.getElementById("studentName").value);
+        console.log("Student group: ", document.getElementById("stGroup").value);
+        alert("Tagasiside edukalt saadetud!");
     }
 
 
@@ -112,8 +115,9 @@ commentEle.addEventListener('input', function (e) {
 
 function fieldCheck(){
     var rating = document.querySelector('input[name="rating"]:checked').value;
-    var comment = document.getElementById("comment").value;
-    if (selectSubject.value == "Vali aine" || selectTeacher.value == "Vali õpetaja" || rating == "") {
+    var studentName = document.getElementById("studentName").value;
+    var stGroup = document.getElementById("stGroup").value;
+    if (selectSubject.value == "Vali aine" || selectTeacher.value == "Vali õpetaja" || rating == "" || studentName == "" || stGroup == "") {
         alert("Vaata üle, kas kõik väljad on täidetud!");
         return false;
     }
