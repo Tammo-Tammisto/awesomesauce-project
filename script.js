@@ -82,10 +82,14 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
     var comment = document.getElementById("comment").value;
 
     // Here you can handle the submission, for now just logging the values
-    console.log("Rating: ", rating);
-    console.log("Comment: ", comment);
-    console.log("Subject: ", selectSubject.value);
-    console.log("Teacher: ", selectTeacher.value);
+
+    if (selectSubject.value !== "Vali aine" && selectTeacher.value !== "Vali õpetaja") {
+        console.log("Rating: ", rating);
+        console.log("Comment: ", comment);
+        console.log("Subject: ", selectSubject.value);
+        console.log("Teacher: ", selectTeacher.value);
+    }
+
 
     // You can send this data to the server using AJAX or other methods
     // For simplicity, I'm just logging it here
@@ -105,3 +109,13 @@ commentEle.addEventListener('input', function (e) {
 
     counterEle.innerHTML = `${currentLength}/${maxLength}`;
 });
+
+function fieldCheck(){
+    var rating = document.querySelector('input[name="rating"]:checked').value;
+    var comment = document.getElementById("comment").value;
+    if (selectSubject.value == "Vali aine" || selectTeacher.value == "Vali õpetaja" || rating == "") {
+        alert("Vaata üle, kas kõik väljad on täidetud!");
+        return false;
+    }
+    return true;
+}
