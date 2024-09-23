@@ -9,25 +9,19 @@
 </head>
 
 <body>
-    <form id="Nimi ja rühm">
-        <label for="studentName">Õpilase nimi:</label><br>
-        <input type="text" id="studentName" name="studentName" placeholder="Õpilase nimi"><br>
-        <label for="stGroup">Rühma nimi:</label><br>
-        <input type="text" id="stGroup" name="stGroup" placeholder="Rühma nimi"><br><br>
-    </form>
-    Õppeaine<br>
-    <select id="selectSubject">
-        <option value="Vali aine">Vali aine</option>
-    </select><br>
-    Õpetaja nimi<br>
-    <select id="selectTeacher">
-        <option>Vali aine enne õpetaja valikut</option>
-    </select>
-    <br>
-    <br>
-    <div class="feedback-form">
-        <h2>Hinnang õpetajale ja tema antud tundidele</h2>
-        <form id="feedbackForm">
+    <div id="wrapper">
+        <div id="vasak">
+            Õppeaine<br>
+            <select id="selectSubject">
+                <option value="Vali aine">Vali aine</option>
+            </select><br>
+            Õpetaja nimi<br>
+            <select id="selectTeacher">
+                <option>Vali aine enne õpetaja valikut</option>
+            </select>
+
+            <br>
+            <h2>Hinnang õpetajale</h2>
             <div class="rating">
                 <!-- Notice that the stars are in reverse order -->
 
@@ -42,15 +36,49 @@
                 <input type="radio" id="star1" name="rating" value="1">
                 <label for="star1">&#9733;</label>
             </div>
-            <div class="comment">
-                <label for="comment">* Lisa täpsustusi (mis meeldis, mis ei meeldinud.)</label><br>
-                <textarea id="comment" name="comment" maxlength="1000"></textarea>
-                <div id="counter"></div>
-            </div>
-            <button type="submit" class="submit-btn" onclick="fieldCheck()">Submit</button>
-        </form>
-    </div>
 
+            <br>
+            <h2>Hinnang tema antud tunnile</h2>
+            <div class="ratingSubject">
+                <!-- Notice that the stars are in reverse order -->
+
+                <input type="radio" id="star5Subject" name="ratingSubject" value="5">
+                <label for="star5Subject">&#9733;</label>
+                <input type="radio" id="star4Subject" name="ratingSubject" value="4">
+                <label for="star4Subject">&#9733;</label>
+                <input type="radio" id="star3Subject" name="ratingSubject" value="3">
+                <label for="star3Subject">&#9733;</label>
+                <input type="radio" id="star2Subject" name="ratingSubject" value="2">
+                <label for="star2Subject">&#9733;</label>
+                <input type="radio" id="star1Subject" name="ratingSubject" value="1">
+                <label for="star1Subject">&#9733;</label>
+            </div>
+        </div>
+    
+        <div id="parem">
+            <form id="Nimi ja rühm">
+                <label for="studentName">Õpilase nimi:</label><br>
+                <input type="text" id="studentName" name="studentName" placeholder="Õpilase nimi"><br>
+                <label for="stGroup">Rühma nimi:</label><br>
+                <input type="text" id="stGroup" name="stGroup" placeholder="Rühma nimi"><br><br>
+            </form>
+            <br>
+            <br>
+            <div class="feedback-form">
+
+                <form id="feedbackForm">
+                    
+                    <div class="comment">
+                        <label for="comment">* Lisa täpsustusi (mis meeldis, mis ei meeldinud.)</label><br>
+                        <textarea id="comment" name="comment" maxlength="1000"></textarea>
+                        <div id="counter"></div>
+                    </div>
+                    <button type="submit" class="submit-btn" onclick="fieldCheck()">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </body>
 <script src="script.js"></script>
 

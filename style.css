@@ -1,9 +1,38 @@
 body {
-    background-color: #C0C2DE;
+
+    background-image: url("img/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 body {
     font-family: Arial, sans-serif;
   }
+  #wrapper {
+    border-top: 2rem;
+    border: 1px solid blue;
+}
+#selectSubject{
+      width: 100%;
+}
+#selectTeacher{
+  width: 100%;
+}
+#vasak {
+    display: inline-block;
+    width:48%;
+    height:100%;
+    border: 1px solid red;
+}
+#parem {
+    display: inline-block;
+    width:48%;
+    height:100%;
+    border: 1px solid green;
+}
+#comment{
+  height: 50vh;
+}
   
   .feedback-form {
     max-width: 400px;
@@ -52,4 +81,29 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  .ratingSubject {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse; /* this is the magic */
+    justify-content: flex-end;
+  }
+  
+  .ratingSubject input {
+    display: none;
+  }
+  
+  .ratingSubject label {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .ratingSubject label:hover,
+  .ratingSubject label:hover ~ label { /* reason why the stars are in reverse order in the html */
+    color: orange;
+  }
+  
+  .ratingSubject input:checked ~ label {
+    color: orange;
   }

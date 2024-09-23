@@ -78,13 +78,15 @@ document.getElementById("selectSubject").onchange = function () {
 };
 document.getElementById("feedbackForm").addEventListener("submit", function (event) {
     event.preventDefault();
-    var rating = document.querySelector('input[name="rating"]:checked').value;
+    var ratingTeacher = document.querySelector('input[name="rating"]:checked').value;
+    var ratingSubject = document.querySelector('input[name="ratingSubject"]:checked').value;
     var comment = document.getElementById("comment").value;
 
     // Here you can handle the submission, for now just logging the values
 
     if (selectSubject.value !== "Vali aine" && selectTeacher.value !== "Vali õpetaja" && document.getElementById("studentName").value !== "" && document.getElementById("stGroup").value !== "") {
-        console.log("Rating: ", rating);
+        console.log("Rating for teacher: ", ratingTeacher);
+        console.log("Rating for subject: ", ratingSubject);
         console.log("Comment: ", comment);
         console.log("Subject: ", selectSubject.value);
         console.log("Teacher: ", selectTeacher.value);
