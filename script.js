@@ -76,28 +76,49 @@ document.getElementById("selectSubject").onchange = function () {
         }
     }
 };
+
 document.getElementById("feedbackForm").addEventListener("submit", function (event) {
     event.preventDefault();
-    var ratingTeacher = document.querySelector('input[name="rating"]:checked').value;
-    var ratingSubject = document.querySelector('input[name="ratingSubject"]:checked').value;
+
+    var subject = document.getElementById("selectSubject").value;
+    var teacher = document.getElementById("selectTeacher").value;
+    var subject_rating = document.querySelector('input[name="ratingSubject"]:checked').value;
+    var teacher_rating = document.querySelector('input[name="rating"]:checked').value;
     var comment = document.getElementById("comment").value;
+    var student_name = document.getElementById("studentName").value;
+    var student_group = document.getElementById("stGroup").value;
 
-    // Here you can handle the submission, for now just logging the values
+    // Create data object to send to server
+    var formData = {
+        subject: subject,
+        subject_rating: subject_rating,
+        teacher: teacher,
+        teacher_rating: teacher_rating,
+        comment: comment,
+        student_name: student_name,
+        student_group: student_group
+    };
 
-    if (selectSubject.value !== "Vali aine" && selectTeacher.value !== "Vali õpetaja" && document.getElementById("studentName").value !== "" && document.getElementById("stGroup").value !== "") {
-        console.log("Rating for teacher: ", ratingTeacher);
-        console.log("Rating for subject: ", ratingSubject);
-        console.log("Comment: ", comment);
-        console.log("Subject: ", selectSubject.value);
-        console.log("Teacher: ", selectTeacher.value);
-        console.log("Student name: ", document.getElementById("studentName").value);
-        console.log("Student group: ", document.getElementById("stGroup").value);
-        alert("Tagasiside edukalt saadetud!");
-    }
-
-
-    // You can send this data to the server using AJAX or other methods
-    // For simplicity, I'm just logging it here
+    // Send the data to the Node.js backend using Fetch API
+    fetch('http://localhost:3000/submit_feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert("Tagasiside edukalt saadetud!");
+            } else {
+                alert("Midagi läks valesti.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Midagi läks valesti.");
+        });
 });
 
 const commentEle = document.getElementById('comment');
@@ -115,7 +136,7 @@ commentEle.addEventListener('input', function (e) {
     counterEle.innerHTML = `${currentLength}/${maxLength}`;
 });
 
-function fieldCheck(){
+function fieldCheck() {
     var rating = document.querySelector('input[name="rating"]:checked').value;
     var studentName = document.getElementById("studentName").value;
     var stGroup = document.getElementById("stGroup").value;
