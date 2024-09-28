@@ -1,5 +1,5 @@
 var selectSubject = document.getElementById("selectSubject");
-var subject = ["Matemaatika", "Inglise keel", "Eesti keel", "Vene keel", "Programmeerimise alused"];
+var subject = ["Matemaatika", "Inglise keel", "Eesti keel", "Vene keel", "Programmeerimine"];
 
 for (var i = 0; i < subject.length; i++) {
     var opt = subject[i];
@@ -64,8 +64,8 @@ document.getElementById("selectSubject").onchange = function () {
             selectTeacher.appendChild(el);
         }
     }
-    else if (selectSubject.value == "Programmeerimise alused") {
-        console.log("Programmeerimise alused");
+    else if (selectSubject.value == "Programmeerimine") {
+        console.log("Programmeerimine");
         document.getElementById("selectTeacher").innerHTML = "";
         for (var i = 0; i < programmingTeachers.length; i++) {
             var opt = programmingTeachers[i];
