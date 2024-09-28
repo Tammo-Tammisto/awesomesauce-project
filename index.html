@@ -23,55 +23,64 @@
             </select>
             <br>
             <br>
-            <h2>Hinnang õpetajale</h2>
-            <div class="rating">
-                <!-- Notice that the stars are in reverse order -->
 
-                <input type="radio" id="star5" name="rating" value="5">
-                <label for="star5">&#9733;</label>
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4">&#9733;</label>
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3">&#9733;</label>
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2">&#9733;</label>
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1">&#9733;</label>
+            <div id="teacherRating">
+                <span>* Hinnang õpetajale</span>
+                <div class="rating">
+
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5">&#9733;</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">&#9733;</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">&#9733;</label>
+                </div>
             </div>
-
             <br>
-            <h2>Hinnang tema antud tunnile</h2>
-            <div class="ratingSubject">
-                <!-- Notice that the stars are in reverse order -->
+            <br>
+            <br>
+            <div id="subjectRating">
+                <span>* Hinnang valitud õppeainele</span>
+                <div class="ratingSubject">
 
-                <input type="radio" id="star5Subject" name="ratingSubject" value="5">
-                <label for="star5Subject">&#9733;</label>
-                <input type="radio" id="star4Subject" name="ratingSubject" value="4">
-                <label for="star4Subject">&#9733;</label>
-                <input type="radio" id="star3Subject" name="ratingSubject" value="3">
-                <label for="star3Subject">&#9733;</label>
-                <input type="radio" id="star2Subject" name="ratingSubject" value="2">
-                <label for="star2Subject">&#9733;</label>
-                <input type="radio" id="star1Subject" name="ratingSubject" value="1">
-                <label for="star1Subject">&#9733;</label>
+                    <input type="radio" id="star5Subject" name="ratingSubject" value="5">
+                    <label for="star5Subject">&#9733;</label>
+                    <input type="radio" id="star4Subject" name="ratingSubject" value="4">
+                    <label for="star4Subject">&#9733;</label>
+                    <input type="radio" id="star3Subject" name="ratingSubject" value="3">
+                    <label for="star3Subject">&#9733;</label>
+                    <input type="radio" id="star2Subject" name="ratingSubject" value="2">
+                    <label for="star2Subject">&#9733;</label>
+                    <input type="radio" id="star1Subject" name="ratingSubject" value="1">
+                    <label for="star1Subject">&#9733;</label>
+                </div>
             </div>
         </div>
-    
+
         <div id="parem">
-            <form id="Nimi ja rühm">
-                <label for="studentName">Õpilase nimi:</label><br>
-                <input type="text" id="studentName" name="studentName" placeholder="Õpilase nimi"><br>
-                <label for="stGroup">Rühma nimi:</label><br>
-                <input type="text" id="stGroup" name="stGroup" placeholder="Rühma nimi"><br><br>
-            </form>
+            <div class="info">
+                <form id="Nimi ja rühm">
+                    
+                    <input type="text" id="studentName" name="studentName" placeholder="Õpilase nimi"><br>
+
+                    <input type="text" id="stGroup" name="stGroup" placeholder="Rühma nimi"><br><br>
+                </form>
+                <img id="kolm" src="icon 1.png" alt="">
+                <img id="kaks" src="icon 2.jpg" alt="">
+
+
             <br>
             <br>
             <div class="feedback-form">
 
                 <form id="feedbackForm">
-                    
+
                     <div class="comment">
-                        <label for="comment">* Lisa täpsustusi (mis meeldis, mis ei meeldinud.)</label><br>
+                        <span>* Kommentaarid</span><br>
                         <textarea id="comment" name="comment" maxlength="1000"></textarea>
                         <div id="counter"></div>
                     </div>
