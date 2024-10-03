@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Average Ratings</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {background-color: #f5f5f5;}
+    </style>
+</head>
+<body>
+
+    <h1>Subject Ratings Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Average Rating</th>
+                <th>Comment</th>
+                <th>Student Group</th>
+            </tr>
+        </thead>
+        <tbody id="dashboardData">
+            <!-- Data will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch dashboard data from the backend
+        fetch('http://localhost:3000/dashboard_data')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('dashboardData');
+
+            data.forEach(subjectItem => {
+                // Insert row for subject and its average rating
+                const subjectRow = document.createElement('tr');
+
+                const subjectCell = document.createElement('td');
+                subjectCell.textContent = subjectItem.subject;
+                subjectRow.appendChild(subjectCell);
+
+                const ratingCell = document.createElement('td');
+                ratingCell.textContent = parseFloat(subjectItem.avg_rating).toFixed(2); // Format rating
+                subjectRow.appendChild(ratingCell);
+
+                // Empty cells for the rest of the first row
+                subjectRow.appendChild(document.createElement('td')); // Empty cell for comment
+                subjectRow.appendChild(document.createElement('td')); // Empty cell for group
+
+                tableBody.appendChild(subjectRow);
+
+                // Insert rows for each comment and student group under the subject
+                subjectItem.comments.forEach(commentItem => {
+                    const commentRow = document.createElement('tr');
+
+                    // Empty cells for subject and rating
+                    commentRow.appendChild(document.createElement('td'));
+                    commentRow.appendChild(document.createElement('td'));
+
+                    const commentCell = document.createElement('td');
+                    commentCell.textContent = commentItem.comment;
+                    commentRow.appendChild(commentCell);
+
+                    const groupCell = document.createElement('td');
+                    groupCell.textContent = commentItem.student_group;
+                    commentRow.appendChild(groupCell);
+
+                    tableBody.appendChild(commentRow);
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    </script>
+
+</body>
+</html>

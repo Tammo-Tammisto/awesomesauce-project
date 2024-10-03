@@ -48,6 +48,42 @@ app.post('/submit_feedback', (req, res) => {
         res.json({ status: 'success', message: 'Feedback submitted successfully!' });
     });
 });
+app.get('/dashboard_data', (req, res) => {
+    const avgQuery = `
+        SELECT subject, AVG(subject_rating) AS avg_rating
+        FROM feedback
+        GROUP BY subject;
+    `;
+
+    const commentsQuery = `
+        SELECT subject, comment, student_group
+        FROM feedback
+        WHERE comment IS NOT NULL AND comment != ''
+        ORDER BY subject;
+    `;
+
+    db.all(avgQuery, [], (err, avgRows) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database query error' });
+        }
+
+        db.all(commentsQuery, [], (err, commentRows) => {
+            if (err) {
+                return res.status(500).json({ status: 'error', message: 'Database query error' });
+            }
+            const combinedData = avgRows.map(avgItem => {
+                const commentsForSubject = commentRows.filter(commentItem => commentItem.subject === avgItem.subject);
+                return {
+                    subject: avgItem.subject,
+                    avg_rating: avgItem.avg_rating,
+                    comments: commentsForSubject
+                };
+            });
+
+            res.json(combinedData);
+        });
+    });
+});
 
 // Start the server
 app.listen(port, () => {
