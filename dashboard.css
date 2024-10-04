@@ -1,5 +1,6 @@
 body {
     background-color: #DDE4F0;
+    font-family: 'Josefin Sans';
 }
 
 #wrapper {
@@ -12,6 +13,57 @@ body {
     display: inline-block;
     width: 40%;
     height: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+
+#aine {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    height: 300px;
+    width: 500px;
+    background-color: white;
+}
+
+#selectSubject {
+    width: 20rem;
+    background-color: white;
+    padding: 5px 5px 5px 15px;
+    border: 1px solid white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 20px;
+    text-indent: 1px;
+    text-overflow: '';
+    font-size: 30px;
+}
+
+#bottom {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    height: 300px;
+    width: 500px;
+    background-color: rgb(73, 73, 73);
+}
+
+#stars {
+    background-color: #DDE4F0;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #parem {
