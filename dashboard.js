@@ -6,7 +6,8 @@ function createDivs(subject) {
     dashboardData.innerHTML = '';
     const subjectBlock = document.createElement('div');
     hinnang.innerHTML = `
-            <h2>${subject.avg_rating}*</h2>
+            <h1>Average subject's rating: </h1>
+            <h1>${subject.avg_rating}*</h1>
         `;
 
     subject.comments.forEach(comment => {
